@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+	--dark: #292C35;
+	--light: #F1F1F1;
+	--label: #111;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+body.active {
+  background-color: var(--dark)
+}
+
+.switch__container {
+  margin: 339px ;
+  width: 120px;
+}
+
+.switch {
+  visibility: hidden;
+  position: absolute;
+  margin-left: -9999px;
+}
+
+.switch + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.switch--shadow + label {
+  padding: 2px;
+  width: 120px;
+  height: 60px;
+  background-color: #dddddd;
+  border-radius: 60px;
+}
+.switch--shadow + label:before,
+.switch--shadow + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: ""; 
+}
+.switch--shadow + label:before {
+  right: 1px;
+  background-color: var(--label);
+  border-radius: 60px;
+  transition: background 0.4s;
+  background-image: url("../public/images/sun.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+}
+.switch--shadow + label:after {
+  width: 62px;
+  background-color: var(--light);
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+.switch--shadow:checked + label:before {
+  background-color:var(--label);
+}
+.switch--shadow:checked + label:after {
+  transform: translateX(60px);
+}
+
+body.active .switch--shadow + label:before {
+  background-image: url("../public/images/moon.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+}
